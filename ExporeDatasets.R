@@ -20,3 +20,26 @@ datasetOverview <- rbindlist(lapply(1:nrow(allDatasets), function(i) {
   }, error = function(e) NULL)
 })) # some warnings might be displayed
 View(datasetOverview[Objects > 500 & Features > 30])
+
+#### Prepare single datasets for classification ####
+
+# kernlab::spam
+data(spam, package = "kernlab")
+dataset <- data.table(spam)
+rm(spam)
+dataset[, target := factor(as.integer(type == "spam"))]
+dataset[, type := NULL]
+
+# kernlab::ticdata
+data(ticdata, package = "kernlab")
+dataset <- data.table(ticdata)
+rm(ticdata)
+dataset[, target := factor(as.integer(CARAVAN == "insurance"))]
+dataset[, CARAVAN := NULL]
+
+# randomForestSRC::housing
+data(housing, package = "randomForestSRC")
+dataset <- data.table(housing)
+rm(housing)
+dataset[, target := factor(as.integer(SalePrice >= 160))]
+dataset[, SalePrice := NULL]
