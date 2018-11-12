@@ -43,3 +43,17 @@ dataset <- data.table(housing)
 rm(housing)
 dataset[, target := factor(as.integer(SalePrice >= 160))]
 dataset[, SalePrice := NULL]
+
+# VGAMdata::xs.nz
+dataset <- data.table(VGAMdata::xs.nz)
+dataset[, target := factor(as.integer(sex == "F"))]
+dataset[, c("regnum", "study1", "sex", "pregnant", "pregfirst", "preglast", "babies") := NULL]
+numericCols <- c("fh.age", "smokeagequit")
+dataset[, (numericCols) := lapply(.SD, as.numeric), .SDcols = numericCols]
+
+# flexclust::auto
+data(auto, package = "flexclust")
+dataset <- data.table(auto)
+rm(auto)
+dataset[, target := factor(as.integer(household == ">=3"))]
+dataset[, household := NULL]
