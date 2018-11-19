@@ -8,4 +8,4 @@ dataset[, c("regnum", "study1", "sex", "pregnant", "pregfirst", "preglast", "bab
 numericCols <- c("fh.age", "smokeagequit")
 dataset[, (numericCols) := lapply(.SD, as.numeric), .SDcols = numericCols]
 dataset[, (colnames(dataset)) := lapply(.SD, makeBoolean)]
-saveRDS(dataset, "data/populationGender.rds")
+saveRDS(dataset, "datasets/populationGender.rds")
