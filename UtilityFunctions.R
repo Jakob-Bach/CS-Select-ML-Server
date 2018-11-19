@@ -59,7 +59,6 @@ imputeColValues <- function(dataset, replacements) {
 # Maps a vector of features (column names) to a list of column names used when
 # creating an xgb.DMatrix (categorical features might result in several columns)
 createXgbColMapping <- function(old, new) {
-  old <- setdiff(old, "target")
   result <- lapply(old, function(colName) grep(paste0("^", colName), new, value = TRUE))
   names(result) <- old
   stopifnot(all(sapply(result, length) > 0)) # each feature has to be mapped
@@ -82,10 +81,12 @@ areColNamesDistinct <- function(colNames) {
 
 # Summarizes all features of a dataset, including description strings from the
 # data.table "columnDescription"
-createSummaryList <- function(dataset, columnDescription) {
-  featureNames <- setdiff(colnames(dataset), "target")
-  result <- lapply(featureNames, function(feature) {
+createSummaryList <- function(dataset, featureNames, columnDescription) {
+  result <- lapply(1:length(featureNames), function(i) {
+    feature <- featureNames[[i]]
     featureSummary <- list()
+    featureSummary[["id"]] <- i
+    featureSummary[["name"]] <- feature
     featureSummary[["description"]] <- columnDescription[Feature == feature, Description]
     featureSummary[["NAs"]] <- dataset[, sum(is.na(get(feature))) / .N]
     featureSummary[["values"]] <- dataset[, as.character(unique(get(feature))[1:10])]
@@ -97,15 +98,14 @@ createSummaryList <- function(dataset, columnDescription) {
     }
     return(featureSummary)
   })
-  names(result) <- featureNames
   return(result)
 }
 
 # Creates and saves two plots for each features in a dataset: histogram/density
 # and histogram/density against classes
-createSummaryPlots <- function(dataset, path) {
+createSummaryPlots <- function(dataset, featureNames, path) {
   progressBar <- txtProgressBar(max = ncol(dataset) - 1, style = 3)
-  for (feature in setdiff(colnames(dataset), "target")) {
+  for (feature in featureNames) {
     if (is.numeric(dataset[, get(feature)]) && !(is.integer(dataset[, get(feature)]) &&
                                                  dataset[, uniqueN(get(feature)) <= 10])) {
       ggplot(data = dataset) +
