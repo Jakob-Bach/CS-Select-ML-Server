@@ -9,6 +9,63 @@ makeBoolean <- function(x) {
   return(x)
 }
 
+# Take any vector; if boolean, convert to integer
+makeBooleanInteger <- function(x) {
+  if (is.logical(x)) {
+    x <- as.integer(x)
+  }
+  return(x)
+}
+
+# Take any vector; if factor with NAs, make NAs an explicit level
+makeNAFactor <- function(x) {
+  if (is.factor(x) && any(is.na(x))) {
+    x <- as.character(x)
+    x[is.na(x)] <- "<N/A>"
+    x <- factor(x)
+  }
+  return(x)
+}
+
+# Returns a named vector containing the median of the numeric columns;
+# for integer columns, if the median falls between two values (is .5),
+# it is rounded down
+getColMedians <- function(dataset) {
+  numericCols <- names(which(sapply(dataset, is.numeric)))
+  return(sapply(dataset[, mget(numericCols)], function(x) {
+    result <- median(x, na.rm = TRUE)
+    if (is.integer(x)) {
+      return(as.integer(result))
+    } else {
+      return(result)
+    }
+  }))
+}
+
+# Takes a data.table and a named list of replacement values; for each column,
+# NAs are replaced with a value from "replacements" (name matching)
+imputeColValues <- function(dataset, replacements) {
+  stopifnot(length(unique(names(replacements))) == length(replacements))
+  result <- copy(dataset)
+  for (colName in names(replacements)) {
+    replacementValue <- replacements[colName]
+    if (colName %in% colnames(dataset) && !is.na(replacementValue)) {
+      result[is.na(get(colName)), (colName) := replacementValue]
+    }
+  }
+  return(result)
+}
+
+# Maps a vector of features (column names) to a list of column names used when
+# creating an xgb.DMatrix (categorical features might result in several columns)
+createXgbColMapping <- function(old, new) {
+  old <- setdiff(old, "target")
+  result <- lapply(old, function(colName) grep(paste0("^", colName), new, value = TRUE))
+  names(result) <- old
+  stopifnot(all(sapply(result, length) > 0)) # each feature has to be mapped
+  stopifnot(sum(sapply(result, length)) == length(new))
+  return(result)
+}
 
 # Check if there are identical column names or one column name is prefix of another
 areColNamesDistinct <- function(colNames) {

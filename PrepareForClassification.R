@@ -33,3 +33,38 @@ oldWd <- getwd()
 setwd(paste0(oldWd, "/datasets/", DATASET_NAME))
 zip(zipfile = paste0("../", DATASET_NAME, ".zip"), files = list.files())
 setwd(oldWd)
+
+#### Prepare classification ####
+
+cat("Preparing data classification ...\n")
+# Convert boolean attributes to integer
+dataset[, (colnames(dataset)) := lapply(.SD, makeBooleanInteger)]
+# Handle NAs in categorical data
+dataset[, (colnames(dataset)) := lapply(.SD, makeNAFactor)]
+# Train-test split (stratified)
+set.seed(25)
+target0Idx <- dataset[, which(target == "0")]
+target1Idx <- dataset[, which(target == "1")]
+trainTarget0 <- sample(target0Idx, size = round(0.8 * length(target0Idx)), replace = FALSE)
+trainTarget1 <- sample(target1Idx, size = round(0.8 * length(target1Idx)), replace = FALSE)
+trainData <- dataset[sort(c(trainTarget0, trainTarget1))]
+testData <- dataset[-c(trainTarget0, trainTarget1)]
+# Handle NAs in numerical data
+naReplacements <- getColMedians(trainData)
+trainData <- imputeColValues(trainData, replacements = naReplacements)
+testData <- imputeColValues(testData, replacements = naReplacements)
+# Convert for "xgboost"
+xgbTrainData <- trainData[, -"target"]
+xgbTrainPredictors <- Matrix::sparse.model.matrix(~ ., data = xgbTrainData)[, -1]
+xgbTrainLabels <- trainData[, as.integer(target) - 1]
+xgbTrainData <- xgboost::xgb.DMatrix(xgbTrainPredictors, label = xgbTrainLabels)
+xgbTestData <- testData[, -"target"]
+xgbTestPredictors <- Matrix::sparse.model.matrix(~ ., data = xgbTestData)[, -1]
+xgbTestLabels <- testData[, as.integer(target) - 1]
+# Save
+saveRDS(xgbTrainPredictors, file = paste0("datasets/", DATASET_NAME, "_train_predictors.rds"))
+saveRDS(xgbTrainLabels, file = paste0("datasets/", DATASET_NAME, "_train_labels.rds"))
+saveRDS(xgbTestPredictors, file = paste0("datasets/", DATASET_NAME, "_test_predictors.rds"))
+saveRDS(xgbTestLabels, file = paste0("datasets/", DATASET_NAME, "_test_labels.rds"))
+saveRDS(createXgbColMapping(old = colnames(trainData), new = colnames(xgbTrainData)),
+    file = paste0("datasets/", DATASET_NAME, "_featureMap.rds"))
