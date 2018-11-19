@@ -41,11 +41,12 @@ getScore <- function(dataset, features) {
       !exists(paste0(dataset, "_featureMap"))) {
     stop(paste0("Dataset \"", dataset, "\" not found on server."))
   }
-  selFeatureIdx <- as.integer(strsplit(features, split = ",", fixed = TRUE))
-  selFeatureIdx <- unlist(get(paste0(dataset, "featureMap"))[selFeatureIdx])
-  if (any(is.na(selFeatureIdx))) {
+  selFeatureIdx <- as.integer(strsplit(features, split = ",", fixed = TRUE)[[1]])
+  selFeatureIdx <- get(paste0(dataset, "_featureMap"))[selFeatureIdx]
+  if (any(sapply(selFeatureIdx, is.null))) {
     stop("At least one of the selected features does not exist.")
   }
+  selFeatureIdx <- unlist(selFeatureIdx)
   xgbModel <- xgboost::xgboost(
     data = xgboost::xgb.DMatrix(
       label = get(paste0(dataset, "_train_labels")),
