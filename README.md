@@ -22,3 +22,19 @@ Examples of queries:
 
 Furthermore, an interactive API documentation is available at `http://127.0.0.1:8000/__swagger__/`.
 If an internal error occurs, e.g. the dataset was not found, status code *500* and an error message are returned.
+
+## Adding a dataset
+
+To add a new dataset, you can (and probably should) first add a custom pre-processing script like `PrepareDemoDataset.R`.
+It has to be a classification task formatted as *data.table* with the class labels in column *target*.
+If there are any outliers, you need to handle them manually.
+NA values are by default replaced with the median in numeric columns and made a new category in categorical columns.
+The following steps are necessary to integrate your dataset:
+
+- Save your (pre-processed) dataset in `datasets/<<datasetName>>.rds`.
+- Create a two-column (*Feature*, *Description*), tabulator-separated file `datasets/<<datasetName>>_columns.csv` containing feature descriptions.
+- Enter your dataset name in `PrepareForClassification.R` and run this script.
+
+Feature summaries, plots and train/test datasets for classification will be created by the script.
+They can be found in the directory `datasets/`.
+Once you start the server, your dataset will be available.
