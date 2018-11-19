@@ -1,5 +1,6 @@
 install.packages("data.table")
-install.packages("plumber")
+install.packages("ggplot2")
+install.packages("plumber") # also installs "jsonlite"
 install.packages("VGAMdata")
 install.packages("xgboost")
 

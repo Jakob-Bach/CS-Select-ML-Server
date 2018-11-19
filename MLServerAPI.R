@@ -9,7 +9,7 @@ version <- function() {
 #* Returns summary data and plots for all features of a dataset.
 #*
 #* @param dataset The dataset (which is stored on the ML server).
-#* @serializer contentType list(type="application/gzip")
+#* @serializer contentType list(type="application/zip")
 #* @get /features
 getFeatures <- function(dataset) {
   if (missing(dataset)) {

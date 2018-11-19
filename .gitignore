@@ -1,5 +1,8 @@
 ## Custom exclusions
+*.json
+*.png
 *.rds
+*.zip
 
 ## R .gitignore from https://github.com/github/gitignore/blob/master/R.gitignore
 
