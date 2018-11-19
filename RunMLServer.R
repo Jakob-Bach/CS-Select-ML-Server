@@ -1,6 +1,9 @@
 library(plumber)
 
-# Load datasets (might not work here, maybe only in API file, as separate environment)
+# Load datasets
+for (fileName in list.files("datasets/", pattern = ".rds$")) {
+  assign(gsub(".rds$", "", fileName), value = readRDS(paste0("datasets/", fileName)))
+}
 
 # Start server
 plumber <- plumb("MLServerAPI.R")
