@@ -7,4 +7,4 @@ for (fileName in list.files("datasets/", pattern = ".rds$")) {
 
 # Start server
 plumber <- plumb("MLServerAPI.R")
-plumber$run(port = 8000, swagger = TRUE)
+plumber$run(host = "0.0.0.0", port = 8000, swagger = TRUE) # this host is necessary for Docker
