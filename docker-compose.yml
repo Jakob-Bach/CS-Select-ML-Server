@@ -1,0 +1,14 @@
+version: '3'
+services:
+  ml-server-api:
+    image: ml-server # depending on local image name
+    expose: # only available to linked services; if host should also access it, use "ports"
+      - "8000" # container uses 8000 internally
+  ml-server-nginx:
+    image: nginx
+    ports:
+     - "80:80"
+    volumes:
+     - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+    depends_on:
+     - ml-server-api

@@ -19,9 +19,20 @@ ML functionality and dataset handling of *CS:Select*.
 1. Start the server by running `docker run --rm -p 8000:8000 -d ml-server` from a console.
 1. Stop the server by running `docker stop $(docker ps -f "ancestor=ml-server" -q)` from a console.
 
+### Docker Compose solution
+
+In contrast to the two other solutions, this approach allows multi-threading.
+Incoming requests are load-balanced by [*nginx*](https://www.nginx.com/).
+
+1. If not already done, install [*Docker*](https://www.docker.com/). On Linux systems, you also need to install [*Docker Compose*](https://docs.docker.com/compose/install/) separately.
+1. If not already done, install our *Docker* image by running `docker build --rm -t ml-server .` from a console (image name is arbitrary). This might take some minutes and print a lot of stuff to the console.
+1. Start the ML server instances by running `docker-compose up -d --scale ml-server-api=2` from a console. This would start two instances of the ML server. While the servers are running, you can call that command again with a different number to increase or decrease the number of ML server instances.
+1. Stop and remove all instances by running `docker-compose down` from a console. You can also stop the containers without removing them by calling `docker-compose stop` and later restart them with `docker-compose start`.
+
 ## Using the server
 
-By default, the server is available at port *8000* of *localhost*.
+By default, the server is available at port *8000* of *localhost* for the manual and for the *Docker* solution.
+The *Docker Compose* approach uses port *80*, but you can leave the port specification out of the URL.
 You can use a tool like [*curl*](https://curl.haxx.se/) to make requests or simply use your browser.
 Examples of queries:
 
