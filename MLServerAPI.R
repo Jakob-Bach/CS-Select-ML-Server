@@ -3,7 +3,7 @@
 #* @serializer unboxedJSON
 #* @get /version
 version <- function() {
-  return(list(APIVersion = "0.1"))
+  return(list(APIVersion = "0.1.1"))
 }
 
 #* Returns summary data and plots for all features of a dataset.

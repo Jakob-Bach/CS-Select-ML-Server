@@ -46,7 +46,8 @@ If an internal error occurs, e.g. the dataset was not found, status code *500* a
 ## Adding a dataset
 
 To add a new dataset, you can (and probably should) first add a custom pre-processing script like `PrepareDemoDataset.R`.
-It has to be a classification task formatted as *data.table* with the class labels in column *target*.
+It has to be a classification task formatted as *data.table* with the class labels being in the last column.
+Currently we only support binary classification, so the class labels should either be *logical* (boolean) or a *factor* with two levels.
 If there are any outliers, you need to handle them manually.
 NA values are by default replaced with the median in numeric columns and made a new category in categorical columns.
 The following steps are necessary to integrate your dataset:

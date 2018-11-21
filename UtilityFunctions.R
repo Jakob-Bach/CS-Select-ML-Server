@@ -103,7 +103,7 @@ createSummaryList <- function(dataset, featureNames, columnDescription) {
 
 # Creates and saves two plots for each features in a dataset: histogram/density
 # and histogram/density against classes
-createSummaryPlots <- function(dataset, featureNames, path) {
+createSummaryPlots <- function(dataset, featureNames, targetColumn, path) {
   progressBar <- txtProgressBar(max = ncol(dataset) - 1, style = 3)
   for (feature in featureNames) {
     if (is.numeric(dataset[, get(feature)]) && !(is.integer(dataset[, get(feature)]) &&
@@ -113,8 +113,8 @@ createSummaryPlots <- function(dataset, featureNames, path) {
         labs(x = paste0("Feature: \"", feature, "\""), y = "Density")
       ggsave(filename = paste0(path, feature, ".png"), width = 4, height = 4)
       ggplot(data = dataset) +
-        geom_density(aes(x = get(feature), fill = target),alpha = 0.5, na.rm = TRUE) +
-        labs(x = paste0("Feature: \"", feature, "\""), y = "Density by class", fill = "Class") +
+        geom_density(aes(x = get(feature), fill = get(targetColumn)),alpha = 0.5, na.rm = TRUE) +
+        labs(x = paste0("Feature: \"", feature, "\""), y = "Density by class", fill = targetColumn) +
         theme(legend.position = "bottom")
       ggsave(filename = paste0(path, feature, "_class.png"), width = 4, height = 4)
     } else {# categorical, integer with 10 distinct values or less
@@ -123,8 +123,8 @@ createSummaryPlots <- function(dataset, featureNames, path) {
         labs(x = paste0("Feature: \"", feature, "\""), y = "Count")
       ggsave(filename = paste0(path, feature, ".png"), width = 4, height = 4)
       ggplot(data = dataset) +
-        geom_bar(aes(x = get(feature), fill = target), position = "dodge") +
-        labs(x = paste0("Feature: \"", feature, "\""), y = "Count", fill = "Class") +
+        geom_bar(aes(x = get(feature), fill = get(targetColumn)), position = "dodge") +
+        labs(x = paste0("Feature: \"", feature, "\""), y = "Count", fill = targetColumn) +
         theme(legend.position = "bottom")
       ggsave(filename = paste0(path, feature, "_class.png"), width = 4, height = 4)
     }
