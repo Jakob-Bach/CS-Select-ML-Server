@@ -3,7 +3,7 @@
 #* @serializer unboxedJSON
 #* @get /version
 version <- function() {
-  return(list(APIVersion = "0.1.1"))
+  return(list(APIVersion = "0.1.2"))
 }
 
 #* Returns summary data and plots for all features of a dataset.
@@ -54,6 +54,20 @@ getScore <- function(dataset, features) {
     nrounds = 1, verbose = 0,
     params = list(objective = "binary:logistic", nthread = 1))
   prediction <- predict(xgbModel, newdata = get(paste0(dataset, "_test_predictors"))[, selFeatureIdx])
-  return(sum(get(paste0(dataset, "_test_labels")) == as.integer(prediction >= 0.5)) /
-           length(prediction)) # accuracy
+  mcc <- mcc(as.integer(prediction >= 0.5), get(paste0(dataset, "_test_labels")))
+  return(0.5 * (1 + mcc)) # linear transformation from [-1,1] to [0,1]
+}
+
+# Matthews Correlation Coefficient for two binary numeric vectors (symmetric
+# measure, so assignment order of params does not really matter)
+mcc <- function(prediction, actual) {
+  tp <- sum(prediction == 1 & actual == 1) * 1.0 # prevent integer overflow
+  tn <- sum(prediction == 0 & actual == 0) * 1.0
+  fp <- sum(prediction == 1 & actual == 0) * 1.0
+  fn <- sum(prediction == 0 & actual == 1) * 1.0
+  result <- (tp*tn - fp*fn) / sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+  if (is.na(result)) { # just one class in actual or prediction
+    result <- 0
+  }
+  return(result)
 }
