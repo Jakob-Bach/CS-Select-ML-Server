@@ -3,7 +3,7 @@
 #* @serializer unboxedJSON
 #* @get /version
 version <- function() {
-  return(list(APIVersion = "0.1.2"))
+  return(list(APIVersion = "0.1.3"))
 }
 
 #* Returns summary data and plots for all features of a dataset.
@@ -50,10 +50,11 @@ getScore <- function(dataset, features) {
   xgbModel <- xgboost::xgboost(
     data = xgboost::xgb.DMatrix(
       label = get(paste0(dataset, "_train_labels")),
-      data = get(paste0(dataset, "_train_predictors"))[, selFeatureIdx]),
+      data = get(paste0(dataset, "_train_predictors"))[, selFeatureIdx, drop = FALSE]),
     nrounds = 1, verbose = 0,
     params = list(objective = "binary:logistic", nthread = 1))
-  prediction <- predict(xgbModel, newdata = get(paste0(dataset, "_test_predictors"))[, selFeatureIdx])
+  prediction <- predict(xgbModel, newdata =
+      get(paste0(dataset, "_test_predictors"))[, selFeatureIdx, drop = FALSE])
   mcc <- mcc(as.integer(prediction >= 0.5), get(paste0(dataset, "_test_labels")))
   return(0.5 * (1 + mcc)) # linear transformation from [-1,1] to [0,1]
 }
