@@ -22,15 +22,16 @@ stopifnot(areColNamesDistinct(colnames(dataset)))
 
 # Read column description CSV
 columnDescription <- data.table(read.csv(file = paste0("datasets/", DATASET_NAME, "_columns.csv"),
-    header = TRUE, sep = "\t", as.is = TRUE))
+    header = TRUE, sep = "\t", as.is = TRUE, encoding = "UTF-8"))
 stopifnot(length(intersect(featureNames, columnDescription$dataset_feature)) ==
             length(union(featureNames, columnDescription$dataset_feature)))
 # Create and save summary JSON (feature descriptions, statistics, exemplary values)
+# useBytes makes sure we keep UTF-8 encoding
 cat("Creating feature summary JSON ...\n")
 dir.create(paste0("datasets/", DATASET_NAME), showWarnings = FALSE)
-jsonlite::write_json(createSummaryList(dataset = dataset, featureNames = featureNames,
-    columnDescription = columnDescription),
-    path = paste0("datasets/", DATASET_NAME, "/summary.json"), auto_unbox = TRUE)
+writeLines(text = jsonlite::toJSON(createSummaryList(dataset = dataset,
+    featureNames = featureNames, columnDescription = columnDescription), auto_unbox = TRUE),
+    con = paste0("datasets/", DATASET_NAME, "/summary.json"), useBytes = TRUE)
 # Create and save summary plots (distribution, distribution against classes)
 cat("Creating feature summary plots ...\n")
 createSummaryPlots(dataset = dataset, featureNames = featureNames,
