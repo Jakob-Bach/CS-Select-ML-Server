@@ -1,52 +1,52 @@
-dataset_feature	name_en	description_en
-age	Age	Age in years.
-pulse	Pulse	Pulse in beats per minute.
-sbp	Blood pressure (systolic)	Systolic blood pressure in mm Hg.
-dbp	Blood pressure (diastolic)	Diastolic blood pressure in mm Hg.
-cholest	Cholesterol	Cholesterol in mmol/L.
-height	Height	Height in m.
-weight	Weight	Weight in kg.
-fh.heartdisease	Heart disease in family	Has a family history of heart disease (heart attack, angina, or had a heart bypass operation) within the immediate family (brother, sister, father or mother, blood relatives only)? Note that D means: do not know.
-fh.age	Heart disease in family: age	If the family has a history of heart disease, how old was the family member when it happened (if more than one family member, give the age of the youngest person)?
-fh.cancer	Cancer in family	Has a family history of cancer within the immediate family (blood relatives only)? Note that D means: do not know.
-heartattack	Heart attack	Have you ever been told by a doctor that you have had a heart attack (coronary)?
-stroke	Stroke	Have you ever been told by a doctor that you have had a stroke?
-diabetes	Diabetes	Have you ever been told by a doctor that you have had diabetes?
-hypertension	Hypertension	Have you ever been told by a doctor that you have had high blood pressure (hypertension)?
-highchol	High cholesterol	Have you ever been told by a doctor that you have had high cholesterol?
-asthma	Asthma	Have you ever been told by a doctor that you have had asthma?
-cancer	Cancer	Have you ever been told by a doctor that you have had cancer?
-acne	Acne	Have you ever received treatment from a doctor for acne (pimples)?
-sunburn	Sunburn	Have you ever received treatment from a doctor for sunburn?
-smokeever	Smoked (ever)	Have you ever smoked tailor-made or roll-you-own cigarettes once a week or more?
-smokenow	Smoker	Do you smoke tailor-made or roll-you-own cigarettes now?
-smokeagequit	Smoke age quit	If you don't smoke now, how old were you when you stopped smoking?
-smokeyears	Smoke years	If you smoke now, for how many years altogether have you smoked tailor-made or roll-you-own cigarettes?
-drinkmonth	Drink per month	Do you drink alcohol once a month or more?
-drinkfreqweek	Drink per week	About how often do you drink alcohol (days per week)?
-drinkweek	Drinks per week	How many drinks per week, on average.
-drinkmaxday	Max drinks per day	In the last three months, what is the largest number of drinks that you had on any one day?
-moody	Moody	Does your mood often go up or down?
-miserable	Miserable	Do you ever feel just miserable for no reason?
-hurt	Hurt	Are your feelings easily hurt?
-fedup	Fedup	Do you often feel fed up?
-nervous	Nervous	Would you call yourself a nervous person?
-worrier	Worrier	Are you a worrier?
-worry	Worry	Do you worry about awful things that might happen?
-tense	Tense	Would you call yourself tense or highly strung?
-embarrassed	Embarrased	Do you worry too long after an embarrassing experience?
-nerves	Nerves	Do you suffer from nerves?
-nofriend	No friend	Do you have a friend or family member that you can talk to about problems or worries that you may have? Note: The value TRUE means no.
-depressed	Depressed	In your lifetime, have you ever had two weeks or more when nearly every day you felt sad or depressed?
-exervig	Execise (vigorous)	How many hours per week would you do any vigorous activity or exercise either at work or away from work that makes you breathe hard and sweat?
-exermod	Exercise (moderate)	How many hours per week would you do any moderate activity or exercise such as brisk walking, cycling or mowing the lawn?
-feethour	Time on feet	On an average work day, how long would you spend on your feet, either standing or moving about?
-ethnicity	Ethnicity	What ethnic group do you belong to? European = European (NZ European or British or other European), Maori = Maori, Polynesian = Pacific Island Polynesian, Other = Other (Chinese, Indian, Other).
-sleep	Sleep	How many hours do you usually sleep each night?
-snore	Snore	Do you usually snore? Note that D means: do not know.
-cat	Cat	Do you have a household pet cat?
-dog	Dog	Do you have a household pet dog?
-hand	Handed	Are you right-handed, left-handed, or no preference for left or right?
-numhouse	Inhabitants	How many people (including yourself) usually live in your house?
-marital	Marital	single = single, married = married or living with a partner, separated = separated or divorced, widowed = widowed.
-educ	Education	What was the highest level of education you received? primary = Primary school, secondary = High school/secondary school, polytechnic = Polytechnic or similar, university = University.
+dataset_feature	name_en	description_en	name_de	description_de
+age	Age	Age in years.	Alter	Alter in Jahren.
+pulse	Pulse	Pulse in beats per minute.	Puls	Puls in Schlägen pro Minute.
+sbp	Blood pressure (systolic)	Systolic blood pressure in mm Hg.	Blutdruck (systolisch)	Systolischer Blutdruck in mmHg.
+dbp	Blood pressure (diastolic)	Diastolic blood pressure in mm Hg.	Blutdruck (diastolisch)	Diastolischer Blutdruck in mmHg.
+cholest	Cholesterol	Cholesterol in mmol/L.	Cholesterin	Cholesterin in mmol/l.
+height	Height	Height in m.	Größe	Körpergröße in m.
+weight	Weight	Weight in kg.	Gewicht	Gewicht in kg.
+fh.heartdisease	Heart disease in family	Has a family history of heart disease (heart attack, angina, or had a heart bypass operation) within the immediate family (brother, sister, father or mother, blood relatives only)? Note that D means: do not know.	Herzkrankheit in Familie	Gab es Herzkrankheiten (Herzinfarkt, Angina, Bypass-Operation) innerhalb der unmittelbaren Familie (Bruder, Schwester, Vater oder Mutter, nur Blutsverwandte)? D bedeutet: weiß nicht.
+fh.age	Heart disease in family: age	If the family has a history of heart disease, how old was the family member when it happened (if more than one family member, give the age of the youngest person)?	Herzkrankheit in Familie: Alter	Falls es Herzkrankheiten innerhalb der Familie gab, wie alt war das Familienmitglied, als es passiert ist (falls es mehr als ein Familienmitglied betrifft, geben Sie das Alter der jüngsten Person an)?
+fh.cancer	Cancer in family	Has a family history of cancer within the immediate family (blood relatives only)? Note that D means: do not know.	Krebs in Familie	Gab es Fälle von Krebs in der unmittelbaren Familie (nur Blutsverwandte)?D bedeutet: weiß nicht.
+heartattack	Heart attack	Have you ever been told by a doctor that you have had a heart attack (coronary)?	Herzinfarkt	Hat ein Arzt jemals einen Herzinfarkt bei Ihnen diagnostiziert?
+stroke	Stroke	Have you ever been told by a doctor that you have had a stroke?	Schlaganfall	Hat ein Arzt jemals einen Schlaganfall bei Ihnen diagnostiziert?
+diabetes	Diabetes	Have you ever been told by a doctor that you have had diabetes?	Diabetes	Hat ein Arzt jemals Diabetes bei Ihnen diagnostiziert?
+hypertension	Hypertension	Have you ever been told by a doctor that you have had high blood pressure (hypertension)?	Bluthochdruck	Hat ein Arzt jemals Bluthochdruck bei Ihnen diagnostiziert?
+highchol	High cholesterol	Have you ever been told by a doctor that you have had high cholesterol?	Hohes Cholesterin	Hat ein Arzt jemals einen hohen Cholesterinspiegel bei Ihnen diagnostiziert?
+asthma	Asthma	Have you ever been told by a doctor that you have had asthma?	Asthma	Hat ein Arzt jemals Asthma bei Ihnen diagnostiziert?
+cancer	Cancer	Have you ever been told by a doctor that you have had cancer?	Krebs	Hat ein Arzt jemals Krebs bei Ihnen diagnostiziert?
+acne	Acne	Have you ever received treatment from a doctor for acne (pimples)?	Akne	Wurden Sie jemals wegen Akne (pickeln) ärztlich behandelt?
+sunburn	Sunburn	Have you ever received treatment from a doctor for sunburn?	Sonnenbrand	Wurden Sie jemals wegen Sonnenbrand ärztlich behandelt?
+smokeever	Smoked (ever)	Have you ever smoked tailor-made or roll-you-own cigarettes once a week or more?	Jemals geraucht	Haben Sie jemals mehr als einmal pro Woche geraucht?
+smokenow	Smoker	Do you smoke tailor-made or roll-you-own cigarettes now?	Raucher	Rauchen Sie zurzeit?
+smokeagequit	Smoke age quit	If you don't smoke now, how old were you when you stopped smoking?	Rauchen aufgehört (Alter)	Falls Sie zurzeit nicht rauchen, wie alt waren Sie, als Sie mit dem Rauchen aufgehört haben?
+smokeyears	Smoke years	If you smoke now, for how many years altogether have you smoked tailor-made or roll-you-own cigarettes?	Raucher seit	Falls Sie zurzeit rauchen, wie viele Jahre sind sie insgesamt Raucher?
+drinkmonth	Drink per month	Do you drink alcohol once a month or more?	Alkohol im Monat	Drinken Sie mindestens einmal im Monat Alkohol?
+drinkfreqweek	Drink days per week	About how often do you drink alcohol (days per week)?	Tage mit Alkoholkonsum	Wie viele Tage pro Woche trinken Sie ungefähr Alkohol?
+drinkweek	Drinks per week	How many drinks per week, on average.	Alkoholkonsum pro Woche	Wie viele alkoholische Getränke nehmen Sie im Durchschnitt pro Woche zu sich?
+drinkmaxday	Max drinks per day	In the last three months, what is the largest number of drinks that you had on any one day?	Maximaler Alkoholkonsum	Was war die größte Anzahl an alkoholischen Getränken, die Sie innerhalb der letzten drei Monate an einem einzigen Tag zu sich genommen haben?
+moody	Moody	Does your mood often go up or down?	Launisch	Wird Ihre Laune oft besser oder schlechter?
+miserable	Miserable	Do you ever feel just miserable for no reason?	Unglücklich	Fühlen Sie sich jemals unglücklich ohne Grund?
+hurt	Hurt	Are your feelings easily hurt?	Verletzt	Sind Ihre Gefühle einfach zu verletzen?
+fedup	Fedup	Do you often feel fed up?	Es satthaben	Haben Sie es oft einfach satt?
+nervous	Nervous	Would you call yourself a nervous person?	Nervös	Würden Sie sich selbst als nervöse Person beschreiben?
+worrier	Worrier	Are you a worrier?	Sorgenmacher	Sind Sie eine Person, die sich ständig Sorgen macht?
+worry	Worry	Do you worry about awful things that might happen?	Besorgt	Machen Sie sich Sorgen, dass schreckliche Dinge passieren könnten?
+tense	Tense	Would you call yourself tense or highly strung?	Angespannt	Würden Sie sich selbst als angespannt bezeichnen?
+embarrassed	Embarrased	Do you worry too long after an embarrassing experience?	Verlegen	Machen Sie sich nach einer peinlichen Situation noch lange Sorgen?
+nerves	Nerves	Do you suffer from nerves?	Nervöse Störung	Leiden Sie an einer nervösen Störung?
+nofriend	No friend	Do you have a friend or family member that you can talk to about problems or worries that you may have? Note: The value TRUE means no.	Keine Freunde	Haben Sie einen Freund oder ein Familienmitglied, mit dem Sie über Ihre Probleme oder Sorgen reden können? Hinweis: TRUE bedeutet hier nein.
+depressed	Depressed	In your lifetime, have you ever had two weeks or more when nearly every day you felt sad or depressed?	Depressiv	Gab es in Ihrem Leben schon einmal einen Zeitraum von zwei Wochen oder mehr, in dem Sie sich nahezu jeden Tag traurig oder deprimiert gefühlt haben?
+exervig	Execise (vigorous)	How many hours per week would you do any vigorous activity or exercise either at work or away from work that makes you breathe hard and sweat?	Betätigung (hart)	Wie viele Stunden pro Woche gehen Sie harter körperlicher Betätigung nach, auf der Arbeit oder außerhalb, die Sie zum Schwitzen bringt?
+exermod	Exercise (moderate)	How many hours per week would you do any moderate activity or exercise such as brisk walking, cycling or mowing the lawn?	Betätigung (moderat)	Wie viele Stunde pro Woche gehen Sie moderater körperlicher Betätigung nach, wie schnellem gehen, Fahrradfahren oder Rasenmähen?
+feethour	Time on feet	On an average work day, how long would you spend on your feet, either standing or moving about?	Zeit auf den Füßen	Wie viele Stunden verbringen Sie an einem normalen Arbeitstag auf Ihren Füßen, stehend oder gehend?
+ethnicity	Ethnicity	What ethnic group do you belong to? European = European (NZ European or British or other European), Maori = Maori, Polynesian = Pacific Island Polynesian, Other = Other (Chinese, Indian, Other).	Ethnie	Zu welcher ethnischen Gruppe gehören Sie? European = Europäisch (neuseeländisch-europäisch, britisch oder sonst europäisch), Maori = Maori, Polynesian = polynesisch von den pazifischen Inseln, Other = Andere (chinesisch, indisch, andere)
+sleep	Sleep	How many hours do you usually sleep each night?	Schlafdauer	Wie viele Stunden schlafen Sie gewöhnlich jede Nacht?
+snore	Snore	Do you usually snore? Note that D means: do not know.	Schnarchen	Schnarchen Sie gewöhnlich? D bedeutet: weiß nicht.
+cat	Cat	Do you have a household pet cat?	Katze	Haben Sie eine Katze als Haustier?
+dog	Dog	Do you have a household pet dog?	Hund	Haben Sie einen Hund als Haustier?
+hand	Handed	Are you right-handed, left-handed, or no preference for left or right?	Händig	Sind Sie Rechtshänder, Linkshänder oder ohne Präferenz diesbezüglich
+numhouse	Inhabitants	How many people (including yourself) usually live in your house?	Hausbewohner	Wie viele Personen (Sie eingeschlossen) leben gewöhnlich in Ihrem Haus?
+marital	Marital	single = single, married = married or living with a partner, separated = separated or divorced, widowed = widowed.	Beziehungsstatus	Beziehungsstatus - single = Single, married = verheiratet oder mit einem Partner zusammenlebend, separated = getrennt oder geschieden, widowed = verwitwet.
+educ	Education	What was the highest level of education you received? primary = Primary school, secondary = High school/secondary school, polytechnic = Polytechnic or similar, university = University.	Bildungsstand	Was ist der höchste Ausbildungsstand, den Sie erreicht und abgeschlossen haben? primary = Grundschule, secondary = Weiterführende Schule, polytechnic = Fachhochschule oder ähnlich, university = Universität.
