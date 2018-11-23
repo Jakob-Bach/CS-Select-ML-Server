@@ -23,8 +23,8 @@ stopifnot(areColNamesDistinct(colnames(dataset)))
 # Read column description CSV
 columnDescription <- data.table(read.csv(file = paste0("datasets/", DATASET_NAME, "_columns.csv"),
     header = TRUE, sep = "\t", as.is = TRUE))
-stopifnot(length(intersect(featureNames, columnDescription$Feature)) ==
-            length(union(featureNames, columnDescription$Feature)))
+stopifnot(length(intersect(featureNames, columnDescription$dataset_feature)) ==
+            length(union(featureNames, columnDescription$dataset_feature)))
 # Create and save summary JSON (feature descriptions, statistics, exemplary values)
 cat("Creating feature summary JSON ...\n")
 dir.create(paste0("datasets/", DATASET_NAME), showWarnings = FALSE)

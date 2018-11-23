@@ -53,7 +53,7 @@ NA values are by default replaced with the median in numeric columns and made a 
 The following steps are necessary to integrate your dataset:
 
 - Save your (pre-processed) dataset in `datasets/<<datasetName>>.rds`.
-- Create a two-column (*Feature*, *Description*), tabulator-separated file `datasets/<<datasetName>>_columns.csv` containing feature descriptions.
+- Create a tabulator-separated file `datasets/<<datasetName>>_columns.csv` containing feature descriptions. One column has to be named *dataset_feature* and has to contain the feature names as used in the dataset, further columns should contain natural-language names and descriptions, possibily in several languages (e.g. *name_en*, *description_en*).
 - Enter your dataset name in `PrepareForClassification.R` and run this script.
 
 Feature summaries, plots and train/test datasets for classification will be created by the script.

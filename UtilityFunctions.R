@@ -82,12 +82,14 @@ areColNamesDistinct <- function(colNames) {
 # Summarizes all features of a dataset, including description strings from the
 # data.table "columnDescription"
 createSummaryList <- function(dataset, featureNames, columnDescription) {
+  descriptionIdCol <- which(colnames(columnDescription) == "dataset_feature")
   result <- lapply(1:length(featureNames), function(i) {
     feature <- featureNames[[i]]
     featureSummary <- list()
     featureSummary[["id"]] <- i
     featureSummary[["name"]] <- feature
-    featureSummary[["description"]] <- columnDescription[Feature == feature, Description]
+    featureSummary[colnames(columnDescription)[-descriptionIdCol]] <-
+      as.character(columnDescription[dataset_feature == feature, -"dataset_feature"])
     featureSummary[["NAs"]] <- dataset[, sum(is.na(get(feature))) / .N]
     featureSummary[["values"]] <- dataset[, as.character(unique(get(feature))[1:10])]
     featureSummary[["values"]] <- featureSummary[["values"]][!is.na(featureSummary[["values"]])]

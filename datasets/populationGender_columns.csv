@@ -1,52 +1,52 @@
-Feature	Description
-age	Age in years.
-pulse	Beats per minute.
-sbp	Systolic blood pressure (mm Hg).
-dbp	Diastolic blood pressure (mm Hg).
-cholest	Cholesterol (mmol/L).
-height	Height in m.
-weight	Weight in kg.
-fh.heartdisease	Has a family history of heart disease (heart attack, angina, or had a heart bypass operation) within the immediate family (brother, sister, father or mother, blood relatives only)? Note that D means: do not know.
-fh.age	If the family has a history of heart disease, how old was the family member when it happened (if more than one family member, give the age of the youngest person)?
-fh.cancer	Has a family history of cancer within the immediate family (blood relatives only)? Note that D means: do not know.
-heartattack	Have you ever been told by a doctor that you have had a heart attack (coronary)?
-stroke	Have you ever been told by a doctor that you have had a stroke?
-diabetes	Have you ever been told by a doctor that you have had diabetes?
-hypertension	Have you ever been told by a doctor that you have had high blood pressure (hypertension)?
-highchol	Have you ever been told by a doctor that you have had high cholesterol?
-asthma	Have you ever been told by a doctor that you have had asthma?
-cancer	Have you ever been told by a doctor that you have had cancer?
-acne	Have you ever received treatment from a doctor for acne (pimples)?
-sunburn	Have you ever received treatment from a doctor for sunburn?
-smokeever	Have you ever smoked tailor-made or roll-you-own cigarettes once a week or more?
-smokenow	Do you smoke tailor-made or roll-you-own cigarettes now?
-smokeagequit	If you don't smoke now, how old were you when you stopped smoking?
-smokeyears	If you smoke now, for how many years altogether have you smoked tailor-made or roll-you-own cigarettes?
-drinkmonth	Do you drink alcohol once a month or more?
-drinkfreqweek	About how often do you drink alcohol (days per week)?
-drinkweek	How many drinks per week, on average.
-drinkmaxday	In the last three months, what is the largest number of drinks that you had on any one day?
-moody	Does your mood often go up or down?
-miserable	Do you ever feel just miserable for no reason?
-hurt	Are your feelings easily hurt?
-fedup	Do you often feel fed up?
-nervous	Would you call yourself a nervous person?
-worrier	Are you a worrier?
-worry	Do you worry about awful things that might happen?
-tense	Would you call yourself tense or highly strung?
-embarrassed	Do you worry too long after an embarrassing experience?
-nerves	Do you suffer from nerves?
-nofriend	Do you have a friend or family member that you can talk to about problems or worries that you may have? Note: The value TRUE means no.
-depressed	In your lifetime, have you ever had two weeks or more when nearly every day you felt sad or depressed?
-exervig	How many hours per week would you do any vigorous activity or exercise either at work or away from work that makes you breathe hard and sweat?
-exermod	How many hours per week would you do any moderate activity or exercise such as brisk walking, cycling or mowing the lawn?
-feethour	On an average work day, how long would you spend on your feet, either standing or moving about?
-ethnicity	What ethnic group do you belong to? European = European (NZ European or British or other European), Maori = Maori, Polynesian = Pacific Island Polynesian, Other = Other (Chinese, Indian, Other).
-sleep	How many hours do you usually sleep each night?
-snore	Do you usually snore? Note that D means: do not know.
-cat	Do you have a household pet cat?
-dog	Do you have a household pet dog?
-hand	Are you right-handed, left-handed, or no preference for left or right?
-numhouse	How many people (including yourself) usually live in your house?
-marital	single = single, married = married or living with a partner, separated = separated or divorced, widowed = widowed.
-educ	What was the highest level of education you received? primary = Primary school, secondary = High school/secondary school, polytechnic = Polytechnic or similar, university = University.
+dataset_feature	name_en	description_en
+age	Age	Age in years.
+pulse	Pulse	Pulse in beats per minute.
+sbp	Blood pressure (systolic)	Systolic blood pressure in mm Hg.
+dbp	Blood pressure (diastolic)	Diastolic blood pressure in mm Hg.
+cholest	Cholesterol	Cholesterol in mmol/L.
+height	Height	Height in m.
+weight	Weight	Weight in kg.
+fh.heartdisease	Heart disease in family	Has a family history of heart disease (heart attack, angina, or had a heart bypass operation) within the immediate family (brother, sister, father or mother, blood relatives only)? Note that D means: do not know.
+fh.age	Heart disease in family: age	If the family has a history of heart disease, how old was the family member when it happened (if more than one family member, give the age of the youngest person)?
+fh.cancer	Cancer in family	Has a family history of cancer within the immediate family (blood relatives only)? Note that D means: do not know.
+heartattack	Heart attack	Have you ever been told by a doctor that you have had a heart attack (coronary)?
+stroke	Stroke	Have you ever been told by a doctor that you have had a stroke?
+diabetes	Diabetes	Have you ever been told by a doctor that you have had diabetes?
+hypertension	Hypertension	Have you ever been told by a doctor that you have had high blood pressure (hypertension)?
+highchol	High cholesterol	Have you ever been told by a doctor that you have had high cholesterol?
+asthma	Asthma	Have you ever been told by a doctor that you have had asthma?
+cancer	Cancer	Have you ever been told by a doctor that you have had cancer?
+acne	Acne	Have you ever received treatment from a doctor for acne (pimples)?
+sunburn	Sunburn	Have you ever received treatment from a doctor for sunburn?
+smokeever	Smoked (ever)	Have you ever smoked tailor-made or roll-you-own cigarettes once a week or more?
+smokenow	Smoker	Do you smoke tailor-made or roll-you-own cigarettes now?
+smokeagequit	Smoke age quit	If you don't smoke now, how old were you when you stopped smoking?
+smokeyears	Smoke years	If you smoke now, for how many years altogether have you smoked tailor-made or roll-you-own cigarettes?
+drinkmonth	Drink per month	Do you drink alcohol once a month or more?
+drinkfreqweek	Drink per week	About how often do you drink alcohol (days per week)?
+drinkweek	Drinks per week	How many drinks per week, on average.
+drinkmaxday	Max drinks per day	In the last three months, what is the largest number of drinks that you had on any one day?
+moody	Moody	Does your mood often go up or down?
+miserable	Miserable	Do you ever feel just miserable for no reason?
+hurt	Hurt	Are your feelings easily hurt?
+fedup	Fedup	Do you often feel fed up?
+nervous	Nervous	Would you call yourself a nervous person?
+worrier	Worrier	Are you a worrier?
+worry	Worry	Do you worry about awful things that might happen?
+tense	Tense	Would you call yourself tense or highly strung?
+embarrassed	Embarrased	Do you worry too long after an embarrassing experience?
+nerves	Nerves	Do you suffer from nerves?
+nofriend	No friend	Do you have a friend or family member that you can talk to about problems or worries that you may have? Note: The value TRUE means no.
+depressed	Depressed	In your lifetime, have you ever had two weeks or more when nearly every day you felt sad or depressed?
+exervig	Execise (vigorous)	How many hours per week would you do any vigorous activity or exercise either at work or away from work that makes you breathe hard and sweat?
+exermod	Exercise (moderate)	How many hours per week would you do any moderate activity or exercise such as brisk walking, cycling or mowing the lawn?
+feethour	Time on feet	On an average work day, how long would you spend on your feet, either standing or moving about?
+ethnicity	Ethnicity	What ethnic group do you belong to? European = European (NZ European or British or other European), Maori = Maori, Polynesian = Pacific Island Polynesian, Other = Other (Chinese, Indian, Other).
+sleep	Sleep	How many hours do you usually sleep each night?
+snore	Snore	Do you usually snore? Note that D means: do not know.
+cat	Cat	Do you have a household pet cat?
+dog	Dog	Do you have a household pet dog?
+hand	Handed	Are you right-handed, left-handed, or no preference for left or right?
+numhouse	Inhabitants	How many people (including yourself) usually live in your house?
+marital	Marital	single = single, married = married or living with a partner, separated = separated or divorced, widowed = widowed.
+educ	Education	What was the highest level of education you received? primary = Primary school, secondary = High school/secondary school, polytechnic = Polytechnic or similar, university = University.
