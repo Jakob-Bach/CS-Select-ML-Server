@@ -1,8 +1,36 @@
 # ML Server
 
-ML functionality and dataset handling of *CS:Select*.
+ML functionality and dataset handling of *CS:Select*, a (discontinued) research project intended to crowdsource feature selection.
+The basic idea is to let domain experts decide which features to select and display them a score for their selection decision.
+To that end, the ML server stores datasets, receives a combination of selected features from a client, builds a prediction model from that, and returns prediction performance.
+Also, the server provides basic summary plots and feature descriptions to the client, which can be shown to domain experts.
+The REST API for this is implemented in `MLServerAPI.R`, using the package `plumber`.
+Below you can find hints to run the server, potentially in a parallelized manner with automatic load balancing.
+An implementation of the frontend and backend of the main software can be found [here](https://github.com/cs-select-team).
+We haven't properly versioned our R packages/environment, so you if wanted to run the software, you needed to install all required packages manually.
+
+## Adding a dataset
+
+A demo dataset for the server can be obtained by running `PrepareDemoDataset.R`.
+To add a new dataset to the server, you can (and probably should) first add a similar pre-processing script, as there are some requirements:
+
+- The dataset has to represent a classification task formatted as *data.table* with the class labels being in the last column.
+- Currently we only support binary classification, so the class labels should either be *logical* (boolean) or a *factor* with two levels.
+- If there are any outliers which you don't want, you need to handle them yourself; we won't do any outlier-related pre-processing.
+- NA values are by default replaced with the median in numeric columns and made a new category in categorical columns.
+
+The following steps are necessary to integrate your dataset:
+
+- Save your (pre-processed) dataset in `datasets/<<datasetName>>.rds`.
+- Create a tabulator-separated, *UTF-8*-encoded file `datasets/<<datasetName>>_columns.csv` containing feature descriptions. One column has to be named *dataset_feature* and has to contain the feature names as used in the dataset, further columns should contain natural-language names and descriptions, possibily in several languages (e.g. *name_en*, *description_en*).
+- Enter your dataset name in `PrepareForClassification.R` and run this script. Feature summaries, plots and train/test datasets for classification will be created by the script. They can be found in the directory `datasets/`.
+
+Once you start the server, your dataset will be available.
 
 ## Running the server
+
+Make sure you have provided a dataset, e.g., by running `PrepareDemoDataset.R`.
+Else, the server is only able to tell you its version, but cannot train prediction models.
 
 ### Manual solution
 
@@ -42,20 +70,3 @@ Examples of queries:
 
 Furthermore, an interactive API documentation is available at `http://127.0.0.1:8000/__swagger__/`.
 If an internal error occurs, e.g. the dataset was not found, status code *500* and an error message are returned.
-
-## Adding a dataset
-
-To add a new dataset, you can (and probably should) first add a custom pre-processing script like `PrepareDemoDataset.R`.
-It has to be a classification task formatted as *data.table* with the class labels being in the last column.
-Currently we only support binary classification, so the class labels should either be *logical* (boolean) or a *factor* with two levels.
-If there are any outliers, you need to handle them manually.
-NA values are by default replaced with the median in numeric columns and made a new category in categorical columns.
-The following steps are necessary to integrate your dataset:
-
-- Save your (pre-processed) dataset in `datasets/<<datasetName>>.rds`.
-- Create a tabulator-separated, *UTF-8*-encoded file `datasets/<<datasetName>>_columns.csv` containing feature descriptions. One column has to be named *dataset_feature* and has to contain the feature names as used in the dataset, further columns should contain natural-language names and descriptions, possibily in several languages (e.g. *name_en*, *description_en*).
-- Enter your dataset name in `PrepareForClassification.R` and run this script.
-
-Feature summaries, plots and train/test datasets for classification will be created by the script.
-They can be found in the directory `datasets/`.
-Once you start the server, your dataset will be available.
